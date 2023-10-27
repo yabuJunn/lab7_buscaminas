@@ -1,4 +1,3 @@
-console.log("Funciona Typescript")
 import "./components/expot"
 
 
@@ -13,12 +12,7 @@ export class AppContainer extends HTMLElement {
     }
 
     render() {
-        const link = this.ownerDocument.createElement("link")
-        link.setAttribute("rel", "stylesheet")
-        link.setAttribute("href", "/src/index.css")
-        this.shadowRoot?.appendChild(link)
-
-        const game = this.ownerDocument.createElement("mine-grid")
+        const game = this.ownerDocument.createElement("mine-table")
         this.shadowRoot?.appendChild(game)
     }
 }

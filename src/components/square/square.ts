@@ -1,8 +1,11 @@
+import { dispatch } from "../../store";
+import { changeSelected } from "../../store/actions";
+
 const enum Square_SquareProperties {
     "mine" = "mine",
     "number" = "number",
     "opened" = "opened",
-    "id" = "id"
+    "ident" = "ident"
 }
 
 export class Square_Square extends HTMLElement {
@@ -10,7 +13,7 @@ export class Square_Square extends HTMLElement {
         mine: "",
         number: "",
         opened: "",
-        id: ""
+        ident: ""
     }
 
     static get observedAttributes() {
@@ -18,7 +21,7 @@ export class Square_Square extends HTMLElement {
             mine: null,
             number: null,
             opened: null,
-            id: null
+            ident: null
 
         }
         return Object.keys(properties);
@@ -40,8 +43,8 @@ export class Square_Square extends HTMLElement {
             case Square_SquareProperties.opened:
                 this.properties.opened = newValue
                 break;
-            case Square_SquareProperties.id:
-                this.properties.id = newValue
+            case Square_SquareProperties.ident:
+                this.properties.ident = newValue
                 break;
             default:
                 break;
@@ -62,6 +65,15 @@ export class Square_Square extends HTMLElement {
         square.classList.add("square")
         this.shadowRoot?.appendChild(square)
 
+        if (this.properties.mine === "true") {
+            square.classList.add("mine")
+        }
+
+        square.addEventListener("click", () => {
+            dispatch(
+                changeSelected(this.properties.ident)
+            )
+        })
     }
 }
 

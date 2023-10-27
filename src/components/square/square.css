@@ -3,3 +3,7 @@
     height: 10px;
     border: 1px inset red;
 }
+
+.mine {
+    background-color: aqua;
+}
