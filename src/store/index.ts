@@ -6,7 +6,8 @@ const observers: Observer[] = [];
 export let state: AppState = {
   selected: "",
   started: false,
-  mines: ""
+  mines: "",
+  opened: []
 };
 
 export const dispatch = (action: Action) => {

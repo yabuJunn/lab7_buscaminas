@@ -1,13 +1,12 @@
 import "../components/expot"
 import { dispatch, state } from "../store"
-import { uploadMines } from "../store/actions"
+import { addOpened, uploadMines } from "../store/actions"
 import { randomCells } from "./randomNumber"
 
 export const creationSquare = (selected: string) => {
     const squareList = []
 
     if (state.started === false) {
-        console.log("No ha comenzado")
 
         for (let i = 1; i < 65; i++) {
             const row: number = Math.ceil(i / 8)
@@ -22,7 +21,6 @@ export const creationSquare = (selected: string) => {
 
         return squareList
     } else {
-        console.log("Ya comenzo")
         let minesList = []
         if (state.mines === "") {
             minesList = randomCells(10, parseInt(selected))
@@ -32,7 +30,6 @@ export const creationSquare = (selected: string) => {
             )
         } else {
             minesList = JSON.parse(state.mines)
-            console.log(minesList)
         }
 
         for (let i = 1; i < 65; i++) {
@@ -48,11 +45,20 @@ export const creationSquare = (selected: string) => {
                 if (mine === i) {
                     square.setAttribute("mine", "true")
                 }
+                if (mine === parseInt(selected)) {
+
+                }
+            });
+
+            state.opened.forEach(element => {
+                console.log(element)
+                if (element === i) {
+                    square.setAttribute("opened", "true")
+                }
             });
 
             squareList.push(square)
         }
-
         return squareList
 
     }

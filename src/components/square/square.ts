@@ -1,5 +1,5 @@
 import { dispatch } from "../../store";
-import { changeSelected } from "../../store/actions";
+import { addOpened, changeSelected } from "../../store/actions";
 
 const enum Square_SquareProperties {
     "mine" = "mine",
@@ -68,10 +68,16 @@ export class Square_Square extends HTMLElement {
         if (this.properties.mine === "true") {
             square.classList.add("mine")
         }
+        if (this.properties.opened === "true") {
+            square.classList.add("opened")
+        }
 
         square.addEventListener("click", () => {
             dispatch(
                 changeSelected(this.properties.ident)
+            )
+            dispatch(
+                addOpened(this.properties.ident)
             )
         })
     }

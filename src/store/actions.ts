@@ -9,3 +9,8 @@ export const uploadMines = (payload: string): Action => ({
   type: Actions.UPLOAD_MINES,
   payload,
 });
+
+export const addOpened = (payload: string): Action => ({
+  type: Actions.ADD_OPENED,
+  payload,
+})

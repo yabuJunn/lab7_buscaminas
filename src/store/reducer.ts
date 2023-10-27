@@ -21,6 +21,13 @@ export const reducer = (action: Action, currentState: AppState): AppState => {
         ...currentState,
         mines: action.payload
       };
+    case Actions.ADD_OPENED:
+      const newOpened = currentState.opened
+      newOpened.push(parseInt(action.payload))
+      return {
+        ...currentState,
+        opened: newOpened 
+      };
     default:
       return currentState;
   }
