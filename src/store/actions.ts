@@ -14,3 +14,19 @@ export const addOpened = (payload: string): Action => ({
   type: Actions.ADD_OPENED,
   payload,
 })
+
+export const lostGame = (payload: string): Action => ({
+  type: Actions.LOST_GAME,
+  payload,
+})
+
+export const resetGame = (): Action => ({
+  type: Actions.RESET_GAME,
+  payload: JSON.stringify({
+    selected: "",
+    started: false,
+    mines: "",
+    opened: [],
+    lost: false
+  })
+})

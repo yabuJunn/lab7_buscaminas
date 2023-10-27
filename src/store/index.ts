@@ -7,7 +7,8 @@ export let state: AppState = {
   selected: "",
   started: false,
   mines: "",
-  opened: []
+  opened: [],
+  lost: false
 };
 
 export const dispatch = (action: Action) => {

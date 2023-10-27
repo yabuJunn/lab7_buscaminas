@@ -1,4 +1,5 @@
-import { state } from "../../store"
+import { dispatch, state } from "../../store"
+import { resetGame } from "../../store/actions"
 import { creationSquare } from "../../utilities/creationSquare"
 import "../expot"
 
@@ -27,6 +28,16 @@ export class MineTable extends HTMLElement {
 
         const mineGrid = this.ownerDocument.createElement("mine-grid")
         gridContainer.appendChild(mineGrid)
+
+        const resetButton = this.ownerDocument.createElement("button")
+        resetButton.innerHTML = "RESET GAME"
+        gridContainer.appendChild(resetButton)
+
+        resetButton.addEventListener("click", () => {
+            dispatch(
+                resetGame()
+            )
+        })
 
         // const squaresContainer = this.ownerDocument.createElement("div")
         // gridContainer.appendChild(squaresContainer)

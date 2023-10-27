@@ -21,13 +21,20 @@ export const reducer = (action: Action, currentState: AppState): AppState => {
         ...currentState,
         mines: action.payload
       };
+    case Actions.LOST_GAME:
+      return {
+        ...currentState,
+        lost: JSON.parse(action.payload)
+      };
     case Actions.ADD_OPENED:
       const newOpened = currentState.opened
       newOpened.push(parseInt(action.payload))
       return {
         ...currentState,
-        opened: newOpened 
+        opened: newOpened
       };
+    case Actions.RESET_GAME:
+      return JSON.parse(action.payload)
     default:
       return currentState;
   }

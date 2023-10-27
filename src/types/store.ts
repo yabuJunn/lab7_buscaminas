@@ -8,7 +8,9 @@ export interface Action {
 export enum Actions {
   "CHANGE_SELECTED" = "CHANGE_SELECTED",
   "UPLOAD_MINES" = "UPLOAD_MINES",
-  "ADD_OPENED" = "ADD_OPENED"
+  "ADD_OPENED" = "ADD_OPENED",
+  "RESET_GAME" = "RESET_GAME",
+  "LOST_GAME" = "LOST_GAME"
 }
 
 export interface AppState {
@@ -16,4 +18,5 @@ export interface AppState {
   selected: string
   mines: string
   opened: number[]
+  lost: boolean
 }
