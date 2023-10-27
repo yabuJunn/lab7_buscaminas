@@ -6,10 +6,12 @@ export interface Action {
 }
 
 export enum Actions {
-  "CHANGE_SELECTED" = "CHANGE_SELECTED"
+  "CHANGE_SELECTED" = "CHANGE_SELECTED",
+  "UPLOAD_MINES" = "UPLOAD_MINES"
 }
 
 export interface AppState {
   started: boolean
   selected: string
+  mines: string
 }

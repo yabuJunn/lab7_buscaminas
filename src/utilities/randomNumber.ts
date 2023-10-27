@@ -2,10 +2,15 @@ const randomIntFromInterval = (min: number, max: number) => { // min and max inc
     return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
-export const randomCells = (minesCount: number) => {
+export const randomCells = (minesCount: number, selected: number) => {
     const minesList = []
     for (let i = 0; i < minesCount; i++) {
-        minesList.push(randomIntFromInterval(1, 64))
+        const randomMine = randomIntFromInterval(1, 64)
+        if (randomMine === selected) {
+            i =- 1
+            continue 
+        }
+        minesList.push(randomMine)
     }
     return minesList
 }

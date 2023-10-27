@@ -16,7 +16,11 @@ export const reducer = (action: Action, currentState: AppState): AppState => {
           selected: action.payload
         };
       }
-      
+    case Actions.UPLOAD_MINES:
+      return {
+        ...currentState,
+        mines: action.payload
+      };
     default:
       return currentState;
   }
